@@ -5,7 +5,7 @@ from langchain_core.messages import HumanMessage
 import re
 
 st.title('CP Homework Solver')
-st.write('Just enter your CP problem statement and get the code, complexity, and test cases.\nIf any error occurs, please refresh the page as AI can make mistakes too.')
+st.write('Just enter your CP problem statement and get the code, complexity, and test cases.\nIf any error occurs, please refresh the page as AI can make mistakes too. and it might be slow  so please wait after code generation, complexity analysis, and test case generation.')
 
 # API Key input
 api_key = st.sidebar.text_input("Enter API Key", type="password")
