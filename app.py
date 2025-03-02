@@ -2,6 +2,7 @@ import streamlit as st
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage
+from streamlit_ace import st_ace
 import re
 
 st.title('CP Homework Solver')
@@ -73,7 +74,7 @@ if api_key:
     model = ChatGroq(model=model_name, groq_api_key=api_key)
 
     st.sidebar.write("Select your needs:")
-    option = st.sidebar.radio("Select your needs:", ["Generate Code"])
+    option = st.sidebar.radio("Select your needs:", ["Generate Code", "Analyze Complexity"])
 
     problem_statement = st.text_area("Enter your CP problem here:")
 
@@ -83,7 +84,13 @@ if api_key:
                 code_result = generate_code(model, problem_statement)
                 analyze_complexity(model, code_result)
                 generate_testcases(model, code_result)
+            elif option == "Analyze Complexity":
+                st.write("Paste your code below : ")
+                cleaned_code = st_ace(language=language, theme="monokai", height=200)
+                analyze_complexity(cleaned_code)
+                generate_testcases(cleaned_code)
         else:
             st.warning("Please enter a problem statement.")
+
 else:
     st.warning("Enter a valid API Key to use the service.")
