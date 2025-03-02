@@ -75,9 +75,12 @@ if api_key:
     model = ChatGroq(model=model_name, groq_api_key=api_key)
     
     st.sidebar.write("Select what function you want to use:")
-    option = st.sidebar.radio("Select an option", ["Generate Code, complexity analysis, test cases from problem statement", "Analyze Complexity of code and give test cases"])
+    option = st.sidebar.radio("Select an option", [
+        "Generate Code, complexity analysis, test cases from problem statement", 
+        "Analyze Complexity of code and give test cases"
+    ])
     
-    if option == "Generate Code":
+    if option == "Generate Code, complexity analysis, test cases from problem statement":
         problem_statement = st.text_area("Enter your CP problem here:")
         if st.button("Solve"):
             if problem_statement:
@@ -87,7 +90,7 @@ if api_key:
             else:
                 st.warning("Please enter a problem statement.")
     
-    elif option == "Analyze Complexity":
+    elif option == "Analyze Complexity of code and give test cases":
         st.write("Paste your code below:")
         cleaned_code = st_ace(language="python", theme="monokai", height=200)
         if st.button("Analyze"):
