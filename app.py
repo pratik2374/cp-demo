@@ -74,8 +74,8 @@ def generate_testcases(model, code_content):
 if api_key:
     model = ChatGroq(model=model_name, groq_api_key=api_key)
     
-    st.sidebar.write("Select your needs:")
-    option = st.sidebar.radio("Select your needs:", ["Generate Code", "Analyze Complexity"])
+    st.sidebar.write("Select what function you want to use:")
+    option = st.sidebar.radio(["Generate Code, complexity analysis, test cases from problem statement", "Analyze Complexity of code and give test cases"])
     
     if option == "Generate Code":
         problem_statement = st.text_area("Enter your CP problem here:")
