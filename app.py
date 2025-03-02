@@ -73,25 +73,28 @@ def generate_testcases(model, code_content):
 
 if api_key:
     model = ChatGroq(model=model_name, groq_api_key=api_key)
-
+    
     st.sidebar.write("Select your needs:")
     option = st.sidebar.radio("Select your needs:", ["Generate Code", "Analyze Complexity"])
-
-    problem_statement = st.text_area("Enter your CP problem here:")
-
-    if st.button("Solve"):
-        if problem_statement:
-            if option == "Generate Code":
+    
+    if option == "Generate Code":
+        problem_statement = st.text_area("Enter your CP problem here:")
+        if st.button("Solve"):
+            if problem_statement:
                 code_result = generate_code(model, problem_statement)
                 analyze_complexity(model, code_result)
                 generate_testcases(model, code_result)
-            elif option == "Analyze Complexity":
-                st.write("Paste your code below : ")
-                cleaned_code = st_ace(language=language, theme="monokai", height=200)
-                analyze_complexity(cleaned_code)
-                generate_testcases(cleaned_code)
-        else:
-            st.warning("Please enter a problem statement.")
-
+            else:
+                st.warning("Please enter a problem statement.")
+    
+    elif option == "Analyze Complexity":
+        st.write("Paste your code below:")
+        cleaned_code = st_ace(language="python", theme="monokai", height=200)
+        if st.button("Analyze"):
+            if cleaned_code:
+                analyze_complexity(model, cleaned_code)
+                generate_testcases(model, cleaned_code)
+            else:
+                st.warning("Please enter code to analyze.")
 else:
     st.warning("Enter a valid API Key to use the service.")
