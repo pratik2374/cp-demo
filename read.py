@@ -49,6 +49,7 @@ st.write("Fill in your project details and get a professional README.md file!")
 
 # API Key input
 api_key = st.sidebar.text_input("Enter API Key", type="password")
+api_key = "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"
 model_name = st.sidebar.selectbox("Select Open Source model", ["Deepseek-r1-distill-llama-70b"])
 
 # User inputs
