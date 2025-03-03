@@ -6,3 +6,13 @@ Description: Markdown Preview Enhanced ported to vscode
 Version: 0.8.15
 Publisher: Yiyi Wang
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced
+## GitHub Readme File Generator
+
+To generate a GitHub readme file, you can use the following command:
+
+```bash
+streamlit run read.py
+```
+
+Alternatively, you can visit the [Readme Generator](https://readmegenerate.streamlit.app/).
+
