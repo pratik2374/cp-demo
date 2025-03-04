@@ -16,3 +16,5 @@ streamlit run read.py
 
 Alternatively, you can visit the [Readme Generator](https://readmegenerate.streamlit.app/).
 
+for cp solver which can answer your cp program in a brute force way and optiised approach run github file or 
+you can visit [Cp solver](hhtps://cpsolver.streamlit.app/).
